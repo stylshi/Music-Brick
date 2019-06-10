@@ -1,0 +1,657 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PPT</title>
+
+</head>
+
+<body background="images/background.png">
+	<div>&nbsp;&nbsp;
+	</div>
+<section>
+<div>
+	<audio controls="controls" preload id="clean_D" hidden>
+ <source src="MP3/clean_D.mp3" type="audio/mp3">
+</audio>
+	<audio controls="controls" preload id="clean_A" hidden>
+ <source src="MP3/clean_A.mp3" type="audio/mp3">
+</audio>
+	<audio controls="controls" preload id="clean_B" hidden>
+ <source src="MP3/clean_B.mp3" type="audio/mp3">
+</audio>
+	<audio controls="controls" preload id="clean_FS" hidden>
+ <source src="MP3/clean_FS.mp3" type="audio/mp3">
+</audio>
+	<audio controls="controls" preload id="clean_G" hidden>
+ <source src="MP3/clean_G.mp3" type="audio/mp3">
+</audio>
+	
+	<audio controls="controls" preload id="clean_D_44basic" hidden>
+ <source src="MP3/clean_D_44basic.mp3" type="audio/mp3">
+</audio>
+	<audio controls="controls" preload id="clean_A_44basic" hidden>
+ <source src="MP3/clean_A_44basic.mp3" type="audio/mp3">
+</audio>
+	<audio controls="controls" preload id="clean_B_44basic" hidden>
+ <source src="MP3/clean_B_44basic.mp3" type="audio/mp3">
+</audio>
+	<audio controls="controls" preload id="clean_FS_44basic" hidden>
+ <source src="MP3/clean_FS_44basic.mp3" type="audio/mp3">
+</audio>
+	<audio controls="controls" preload id="clean_G_44basic" hidden>
+ <source src="MP3/clean_G_44basic.mp3" type="audio/mp3">
+</audio>
+
+
+	<audio controls="controls" preload id="aclean" hidden>
+ <source src="MP3/clean.mp3" type="audio/mp3">
+</audio>
+		<audio controls="controls" preload id="a44basic" hidden>
+ <source src="MP3/44basic.mp3" type="audio/mp3">
+</audio>
+	<script>
+	
+
+	
+	var style1=0;
+	var style2=0;
+	var style3=0;
+	var style4=0;
+	
+	var rhythm1=0;
+	var rhythm2=0;
+	var rhythm3=0;
+	var rhythm4=0;
+	
+	var chord1=0;
+	var chord2=0;
+	var chord3=0;
+	var chord4=0;
+	
+	var audio1;
+	var audio2;
+	var audio3;
+	var audio4;
+	
+	
+	var barflag=1;
+	var attriflag=0;
+	var loopflag=0;
+	var loopcnt=0;
+	var onplayflag=0;
+	
+	function bar(num){
+		
+		if(num==1){
+			barflag=1;
+			document.getElementById("bar1").src = 'ICON/BAR1_D.jpg';
+			document.getElementById("bar2").src = 'ICON/BAR2.jpg';
+			document.getElementById("bar3").src = 'ICON/BAR3.jpg';
+			document.getElementById("bar4").src = 'ICON/BAR4.jpg';
+		}
+		if(num==2){
+			barflag=2;
+			document.getElementById("bar1").src = 'ICON/BAR1.jpg';
+			document.getElementById("bar2").src = 'ICON/BAR2_D.jpg';
+			document.getElementById("bar3").src = 'ICON/BAR3.jpg';
+			document.getElementById("bar4").src = 'ICON/BAR4.jpg';
+		}
+		if(num==3){
+			barflag=3;
+			document.getElementById("bar1").src = 'ICON/BAR1.jpg';
+			document.getElementById("bar2").src = 'ICON/BAR2.jpg';
+			document.getElementById("bar3").src = 'ICON/BAR3_D.jpg';
+			document.getElementById("bar4").src = 'ICON/BAR4.jpg';
+		}
+		if(num==4){
+			barflag=4;
+			document.getElementById("bar1").src = 'ICON/BAR1.jpg';
+			document.getElementById("bar2").src = 'ICON/BAR2.jpg';
+			document.getElementById("bar3").src = 'ICON/BAR3.jpg';
+			document.getElementById("bar4").src = 'ICON/BAR4_D.jpg';
+		}	
+	}
+	function attri(num){
+			if(num==1){
+				attriflag=1;
+				document.getElementById("p1").src = 'ICON/44basic.png';
+				document.getElementById("p2").src = 'ICON/NULL.jpg';
+				document.getElementById("p3").src = 'ICON/NULL.jpg';
+				document.getElementById("p4").src = 'ICON/NULL.jpg';
+				document.getElementById("p5").src = 'ICON/NULL.jpg';
+			}
+			if(num==2){
+				attriflag=2;
+				document.getElementById("p1").src = 'ICON/D.png';
+				document.getElementById("p2").src = 'ICON/FS.png';
+				document.getElementById("p3").src = 'ICON/G.png';
+				document.getElementById("p4").src = 'ICON/A.png';
+				document.getElementById("p5").src = 'ICON/B.png';
+			}
+			if(num==3){
+				attriflag=3;
+				document.getElementById("p1").src = 'ICON/CLEAN.png';
+				document.getElementById("p2").src = 'ICON/NULL.jpg';
+				document.getElementById("p3").src = 'ICON/NULL.jpg';
+				document.getElementById("p4").src = 'ICON/NULL.jpg';
+				document.getElementById("p5").src = 'ICON/NULL.jpg';
+			}				
+	}
+	function p1(){
+		if(attriflag==1){
+			var audio = document.getElementById('a44basic'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放 
+		 }
+			if(barflag==1){
+				document.getElementById("rhythm-1").src = 'ICON/44basic.png';
+				rhythm1=1;
+			}
+			else if(barflag==2){
+				document.getElementById("rhythm-2").src = 'ICON/44basic.png';
+				rhythm2=1;
+			}
+			else if(barflag==3){
+				document.getElementById("rhythm-3").src = 'ICON/44basic.png';
+				rhythm3=1;
+			}
+			else if(barflag==4){
+				document.getElementById("rhythm-4").src = 'ICON/44basic.png';
+				rhythm4=1;
+			}
+		}
+		else if(attriflag==2){
+		 var audio = document.getElementById('clean_D'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放  
+        }
+			if(barflag==1){
+				document.getElementById("chord-1").src = 'ICON/D.png';
+				chord1=6;
+			}
+			else if(barflag==2){
+				document.getElementById("chord-2").src = 'ICON/D.png';
+				chord2=6;
+			}
+			else if(barflag==3){
+				document.getElementById("chord-3").src = 'ICON/D.png';
+				chord3=6;
+			}
+			else if(barflag==4){
+				document.getElementById("chord-4").src = 'ICON/D.png';
+				chord4=6;
+			}
+		}
+		else if(attriflag==3){
+		 var audio = document.getElementById('aclean'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放  
+        }
+			if(barflag==1){
+				document.getElementById("style-1").src = 'ICON/CLEAN.png';
+			    style1=1;
+			}
+			else if(barflag==2){
+				document.getElementById("style-2").src = 'ICON/CLEAN.png';
+				style2=1;
+			}
+			else if(barflag==3){
+				document.getElementById("style-3").src = 'ICON/CLEAN.png';
+				style3=1;
+			}
+			else if(barflag==4){
+				document.getElementById("style-4").src = 'ICON/CLEAN.png';
+				style4=1;
+			}
+		}
+	}
+	function p2(){
+		if(attriflag==1){
+			/*var audio = document.getElementById('a44basic'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放 
+		 }
+			if(barflag==1){
+				document.getElementById("rhythm-1").src = 'ICON/44basic.png';
+				rhythm1=1;
+			}
+			else if(barflag==2){
+				document.getElementById("rhythm-2").src = 'ICON/44basic.png';
+				rhythm2=1;
+			}
+			else if(barflag==3){
+				document.getElementById("rhythm-3").src = 'ICON/44basic.png';
+				rhythm3=1;
+			}
+			else if(barflag==4){
+				document.getElementById("rhythm-4").src = 'ICON/44basic.png';
+				rhythm4=1;
+			}*/
+		}
+		else if(attriflag==2){
+		 var audio = document.getElementById('clean_FS'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放  
+        }
+			if(barflag==1){
+				document.getElementById("chord-1").src = 'ICON/FS.png';
+				chord1=10;
+			}
+			else if(barflag==2){
+				document.getElementById("chord-2").src = 'ICON/FS.png';
+				chord2=10;
+			}
+			else if(barflag==3){
+				document.getElementById("chord-3").src = 'ICON/FS.png';
+				chord3=10;
+			}
+			else if(barflag==4){
+				document.getElementById("chord-4").src = 'ICON/FS.png';
+				chord4=10;
+			}
+		}
+		else if(attriflag==3){
+		 /*var audio = document.getElementById('aclean'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放  
+        }
+			if(barflag==1){
+				document.getElementById("style-1").src = 'ICON/CLEAN.png';
+			    style1=1;
+			}
+			else if(barflag==2){
+				document.getElementById("style-2").src = 'ICON/CLEAN.png';
+				style2=1;
+			}
+			else if(barflag==3){
+				document.getElementById("style-3").src = 'ICON/CLEAN.png';
+				style3=1;
+			}
+			else if(barflag==4){
+				document.getElementById("style-4").src = 'ICON/CLEAN.png';
+				style4=1;
+			}*/
+		}
+	}
+	function p3(){
+		if(attriflag==1){
+			/*var audio = document.getElementById('a44basic'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放 
+		 }
+			if(barflag==1){
+				document.getElementById("rhythm-1").src = 'ICON/44basic.png';
+				rhythm1=1;
+			}
+			else if(barflag==2){
+				document.getElementById("rhythm-2").src = 'ICON/44basic.png';
+				rhythm2=1;
+			}
+			else if(barflag==3){
+				document.getElementById("rhythm-3").src = 'ICON/44basic.png';
+				rhythm3=1;
+			}
+			else if(barflag==4){
+				document.getElementById("rhythm-4").src = 'ICON/44basic.png';
+				rhythm4=1;
+			}*/
+		}
+		else if(attriflag==2){
+		 var audio = document.getElementById('clean_G'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放  
+        }
+			if(barflag==1){
+				document.getElementById("chord-1").src = 'ICON/G.png';
+				chord1=11;
+			}
+			else if(barflag==2){
+				document.getElementById("chord-2").src = 'ICON/G.png';
+				chord2=11;
+			}
+			else if(barflag==3){
+				document.getElementById("chord-3").src = 'ICON/G.png';
+				chord3=11;
+			}
+			else if(barflag==4){
+				document.getElementById("chord-4").src = 'ICON/G.png';
+				chord4=11;
+			}
+		}
+		else if(attriflag==3){
+		 /*var audio = document.getElementById('aclean'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放  
+        }
+			if(barflag==1){
+				document.getElementById("style-1").src = 'ICON/CLEAN.png';
+			    style1=1;
+			}
+			else if(barflag==2){
+				document.getElementById("style-2").src = 'ICON/CLEAN.png';
+				style2=1;
+			}
+			else if(barflag==3){
+				document.getElementById("style-3").src = 'ICON/CLEAN.png';
+				style3=1;
+			}
+			else if(barflag==4){
+				document.getElementById("style-4").src = 'ICON/CLEAN.png';
+				style4=1;
+			}*/
+		}
+	}
+	function p4(){
+		if(attriflag==1){
+			/*var audio = document.getElementById('a44basic'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放 
+		 }
+			if(barflag==1){
+				document.getElementById("rhythm-1").src = 'ICON/44basic.png';
+				rhythm1=1;
+			}
+			else if(barflag==2){
+				document.getElementById("rhythm-2").src = 'ICON/44basic.png';
+				rhythm2=1;
+			}
+			else if(barflag==3){
+				document.getElementById("rhythm-3").src = 'ICON/44basic.png';
+				rhythm3=1;
+			}
+			else if(barflag==4){
+				document.getElementById("rhythm-4").src = 'ICON/44basic.png';
+				rhythm4=1;
+			}*/
+		}
+		else if(attriflag==2){
+		 var audio = document.getElementById('clean_A'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放  
+        }
+			if(barflag==1){
+				document.getElementById("chord-1").src = 'ICON/A.png';
+				chord1=1;
+			}
+			else if(barflag==2){
+				document.getElementById("chord-2").src = 'ICON/A.png';
+				chord2=1;
+			}
+			else if(barflag==3){
+				document.getElementById("chord-3").src = 'ICON/A.png';
+				chord3=1;
+			}
+			else if(barflag==4){
+				document.getElementById("chord-4").src = 'ICON/A.png';
+				chord4=1;
+			}
+		}
+		else if(attriflag==3){
+		 /*var audio = document.getElementById('aclean'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放  
+        }
+			if(barflag==1){
+				document.getElementById("style-1").src = 'ICON/CLEAN.png';
+			    style1=1;
+			}
+			else if(barflag==2){
+				document.getElementById("style-2").src = 'ICON/CLEAN.png';
+				style2=1;
+			}
+			else if(barflag==3){
+				document.getElementById("style-3").src = 'ICON/CLEAN.png';
+				style3=1;
+			}
+			else if(barflag==4){
+				document.getElementById("style-4").src = 'ICON/CLEAN.png';
+				style4=1;
+			}*/
+		}
+	}
+	function p5(){
+		if(attriflag==1){
+			/*var audio = document.getElementById('a44basic'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放 
+		 }
+			if(barflag==1){
+				document.getElementById("rhythm-1").src = 'ICON/44basic.png';
+				rhythm1=1;
+			}
+			else if(barflag==2){
+				document.getElementById("rhythm-2").src = 'ICON/44basic.png';
+				rhythm2=1;
+			}
+			else if(barflag==3){
+				document.getElementById("rhythm-3").src = 'ICON/44basic.png';
+				rhythm3=1;
+			}
+			else if(barflag==4){
+				document.getElementById("rhythm-4").src = 'ICON/44basic.png';
+				rhythm4=1;
+			}*/
+		}
+		else if(attriflag==2){
+		 var audio = document.getElementById('clean_B'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放  
+        }
+			if(barflag==1){
+				document.getElementById("chord-1").src = 'ICON/B.png';
+				chord1=2;
+			}
+			else if(barflag==2){
+				document.getElementById("chord-2").src = 'ICON/B.png';
+				chord2=2;
+			}
+			else if(barflag==3){
+				document.getElementById("chord-3").src = 'ICON/B.png';
+				chord3=2;
+			}
+			else if(barflag==4){
+				document.getElementById("chord-4").src = 'ICON/B.png';
+				chord4=2;
+			}
+		}
+		else if(attriflag==3){
+		 /*var audio = document.getElementById('aclean'); 
+         if(audio.paused){                 
+         audio.play();//audio.play();// 播放  
+        }
+			if(barflag==1){
+				document.getElementById("style-1").src = 'ICON/CLEAN.png';
+			    style1=1;
+			}
+			else if(barflag==2){
+				document.getElementById("style-2").src = 'ICON/CLEAN.png';
+				style2=1;
+			}
+			else if(barflag==3){
+				document.getElementById("style-3").src = 'ICON/CLEAN.png';
+				style3=1;
+			}
+			else if(barflag==4){
+				document.getElementById("style-4").src = 'ICON/CLEAN.png';
+				style4=1;
+			}*/
+		}
+	}
+	function play1(){
+		if(loopcnt>2){loopflag=0;}
+		else{loopcnt=loopcnt+1;}
+		if(style1==1){
+				if(rhythm1==1){
+					if(chord1==6){ audio1 = document.getElementById('clean_D_44basic');}
+					else if(chord1==10){ audio1 = document.getElementById('clean_FS_44basic'); }
+					else if(chord1==11){ audio1 = document.getElementById('clean_G_44basic');}
+					else if(chord1==1){ audio1 = document.getElementById('clean_A_44basic');}
+					else if(chord1==2){ audio1 = document.getElementById('clean_B_44basic');}
+				}
+			}
+			audio1.play();
+		    audio1.addEventListener('ended',play2, false);
+	}
+	function play2(){
+		if(style2==1){
+				if(rhythm2==1){
+					if(chord2==6){ audio2 = document.getElementById('clean_D_44basic');}
+					else if(chord2==10){audio2 = document.getElementById('clean_FS_44basic'); }
+					else if(chord2==11){ audio2 = document.getElementById('clean_G_44basic');}
+					else if(chord2==1){ audio2 = document.getElementById('clean_A_44basic');}
+					else if(chord2==2){ audio2 = document.getElementById('clean_B_44basic');}
+				}
+			}
+			audio2.play();
+		    audio2.addEventListener('ended',play3, false);
+	}
+		function play3(){
+		if(style3==1){
+				if(rhythm3==1){
+					if(chord3==6){ audio3 = document.getElementById('clean_D_44basic');}
+					else if(chord3==10){audio3 = document.getElementById('clean_FS_44basic'); }
+					else if(chord3==11){ audio3 = document.getElementById('clean_G_44basic');}
+					else if(chord3==1){ audio3 = document.getElementById('clean_A_44basic');}
+					else if(chord3==2){ audio3 = document.getElementById('clean_B_44basic');}
+				}
+			}
+			audio3.play();
+			audio3.addEventListener('ended',play4, false);
+	}
+		function play4(){
+		if(style4==1){
+				if(rhythm4==1){
+					if(chord4==6){ audio4 = document.getElementById('clean_D_44basic');}
+					else if(chord4==10){audio4 = document.getElementById('clean_FS_44basic'); }
+					else if(chord4==11){ audio4 = document.getElementById('clean_G_44basic');}
+					else if(chord4==1){ audio4 = document.getElementById('clean_A_44basic');}
+					else if(chord4==2){ audio4 = document.getElementById('clean_B_44basic');}
+				}
+			}
+			audio4.play();
+			
+			if(loopflag==1){
+				audio4.addEventListener('ended',play1, false);
+				
+			}
+			else if(loopflag==0){audio4.addEventListener('ended',onplayflag0, false);}
+	}
+	function onplayflag0(){onplayflag=0;loopcnt=0;}
+	function single_play(){
+		onplayflag=1;
+		loopflag=0;
+		loopcnt=0;
+		if(style1==0||style2==0||style3==0||style4==0||chord1==0||chord2==0||chord3==0||chord4==0||rhythm1==0||rhythm2==0||rhythm3==0||rhythm4==0){
+		   alert("You haven't finish editing!"); 
+			onplayflag=0;
+		}
+		else{
+			play1();
+		}
+		
+	}
+	function loop_play(){
+		onplayflag=1;
+		loopflag=1;
+		loopcnt=0;
+		if(style1==0||style2==0||style3==0||style4==0||chord1==0||chord2==0||chord3==0||chord4==0||rhythm1==0||rhythm2==0||rhythm3==0||rhythm4==0){}
+		else{
+			play1();
+		}
+	}
+
+		function astop(){
+			audio1.stop();
+			audio2.stop();
+			audio3.stop();
+			audio3.stop();
+			audio1=null;
+			audio2=null;
+			audio3=null;
+			audio3=null;
+		}
+	</script>
+  </div>
+<div>
+	<blockquote>
+	  <blockquote>
+	    <blockquote src="MP3/clean_FS.mp3" type="audio/mp3">
+	      <blockquote>
+	        <blockquote>
+	          <blockquote>
+	            <blockquote>
+	              <blockquote>
+	                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="ICON/RHYTHM.png" alt="" width="153" height="65" id="rhythm" onclick="attri(1);"/><img src="images/NULL.jpg" width="153" height="115" alt=""/>
+	                  <img src="ICON/CHORD.png" alt="" width="153" height="65" id="chord" onclick="attri(2);"/><img src="images/NULL.jpg" width="153" height="115" alt=""/><img src="ICON/STYLE.png" alt="" width="153" height="65" id="style" onclick="attri(3);"/></p>
+	                </blockquote>
+	              </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+</div>
+	
+	<div>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <blockquote>
+                      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="ICON/Null.jpg" width="153" height="59" alt=""id="p1" onclick="p1();"/> 
+                        <img src="ICON/Null.jpg" width="153" height="59" alt=""id="p2" onclick="p2();"/> 
+                        <img src="ICON/Null.jpg" width="153" height="59" alt=""id="p3" onclick="p3();"/> 
+                        <img src="ICON/Null.jpg" width="153" height="59" alt=""id="p4" onclick="p4();"/> 
+                      <img src="ICON/Null.jpg" width="153" height="59" alt=""id="p5" onclick="p5();"/></p>
+                    </blockquote>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+	</div>
+	
+
+	<div>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <img src="ICON/BAR1_D.jpg" alt="" width="153" height="59" id="bar1" onclick="bar(1);"/> 
+	  <img src="ICON/Null.jpg" width="153" height="59" alt=""id="rhythm-1" />
+	  <img src="ICON/Null.jpg" width="153" height="59" alt=""id="chord-1" />
+	  <img src="ICON/Null.jpg" width="153" height="59" alt=""id="style-1" />
+</div>
+<div>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<img src="ICON/BAR2.jpg" alt="" width="153" height="65" id="bar2" onclick="bar(2);"/> 
+	  <img src="ICON/Null.jpg" width="153" height="59" alt=""id="rhythm-2" />
+		<img src="ICON/Null.jpg" width="153" height="59" alt=""id="chord-2" />
+		<img src="ICON/Null.jpg" width="153" height="59" alt=""id="style-2" />
+  </div>
+	
+	<div>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <img src="ICON/BAR3.jpg" alt="" width="153" height="59" id="bar3" onclick="bar(3);"/>
+	  <img src="ICON/Null.jpg" width="153" height="59" alt=""id="rhythm-3" />
+	  <img src="ICON/Null.jpg" width="153" height="59" alt=""id="chord-3" />
+	  <img src="ICON/Null.jpg" width="153" height="59" alt=""id="style-3" />
+	</div>
+	<div>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <img src="ICON/BAR4.jpg" alt="" width="153" height="59" id="bar4" onclick="bar(4);"/>
+	  <img src="ICON/Null.jpg" width="153" height="59" alt=""id="rhythm-4" />
+	  <img src="ICON/Null.jpg" width="153" height="59" alt=""id="chord-4" />
+	  <img src="ICON/Null.jpg" width="153" height="59" alt=""id="style-4"/>
+	</div>
+	<div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<img src="images/NULL.jpg" width="153" height="115" alt=""/><img src="images/NULL.jpg" width="153" height="115" alt=""/><img src="ICON/PLAY.png" width="153" height="65" alt="" id="single_play2" onClick="if(onplayflag==0){single_play();}" /><img src="images/NULL.jpg" width="153" height="115" alt=""/><img src="images/NULL.jpg" width="153" height="115" alt=""/><img src="images/NULL.jpg" width="153" height="115" alt=""/>
+		<!--<img src="ICON/LOOP.jpg" width="153" height="115" alt="" id="Loop2" onClick="if(onplayflag==0){loop_play();}" /> >
+		</div>
+</section>
+</body>
+</html>
